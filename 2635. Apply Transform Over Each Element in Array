@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} arr // int array
+ * @param {Function} fn // mapping
+ * @return {number[]} // return new array
+ */
+var map = function(arr, fn) {
+    const number = new Array(arr.length);
+    for(let i = 0; i < arr.length; i++){
+       number[i] = fn(arr[i],i);
+    }
+    return number;
+};
