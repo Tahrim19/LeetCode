@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        // negative number cannot be palindrome
+        if ( x < 0) {
+            return false;
+        }
+        int num =  x;
+        long long rev = 0;
+        while (num != 0) {
+            rev = rev * 10 + num % 10; // Add last digit
+            num = num / 10;            // Remove last digit
+        }
+        return (x == rev);
+        // // logic
+        // int temp =  x , rev = 0, digit;
+        // while (temp != 0){
+        //     digit = temp % 10;
+        //     rev = (rev * 10 ) + digit;
+        //     temp = temp/10;
+        // }
+        // return (x == rev);
+    }
+};
