@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int arrSum=0;
+        int n = size(nums);
+        // sum of array: 
+        for(int i = 0; i<n; i++){
+            arrSum = arrSum+nums[i];
+        }
+        // sum of n numbers:
+        int sum = (n*(n+1))/2;
+        return sum-arrSum;
+    }
+};
