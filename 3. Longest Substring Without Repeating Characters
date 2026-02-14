@@ -1,0 +1,27 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.length() == 0) return 0;
+
+        String ans = "";
+        int maxLen = 0;
+        int i = 0; // start pointer
+        int j = 0; // end pointer
+
+        while (j < s.length()) {
+            char current = s.charAt(j);
+
+            if (ans.indexOf(current) == -1) {
+                ans += current; // add non-duplicate char
+                j++;
+                maxLen = Math.max(maxLen, ans.length());
+            } else {
+                // remove all characters up to and including the duplicate
+                int dupIndex = ans.indexOf(current);
+                ans = ans.substring(dupIndex + 1);
+                i += dupIndex + 1; // move start pointer forward
+            }
+        }
+
+        return maxLen;
+    }
+}
