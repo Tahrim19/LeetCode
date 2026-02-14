@@ -1,0 +1,44 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1 || s.length() <= numRows) return s;
+
+       int len = s.length();
+       boolean down = true;
+       char res[][] = new char [numRows][len];
+       int row = 0;
+       int col = 0;
+
+       for(int i = 0; i < len; i++){
+        res[row][col] = s.charAt(i);
+        if(down){
+            if(row == numRows-1){ // bottom reached
+                down = false;
+                row--; 
+                col++;
+            } else {
+                row++;
+            }
+        } else {
+            if(row == 0){ // top reached
+                down = true;
+                row++;
+            }else{
+                row--;
+                col++;
+            }
+        }
+       }
+
+        String ans = "";
+       // read matrix row by row
+        for (int r = 0; r < numRows; r++) {
+            for (int c = 0; c < len; c++) {
+                if (res[r][c] != '\0') { 
+                    ans = ans + res[r][c];
+                }
+            }
+        }
+
+        return ans;
+    }
+}  
